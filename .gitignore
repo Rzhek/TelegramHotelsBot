@@ -1,0 +1,10 @@
+.idea/
+.git/
+.handler-saves/
+__pycache__/
+venv/
+history.db
+.env
+.vscode
+*.code-workspace
+*.json
