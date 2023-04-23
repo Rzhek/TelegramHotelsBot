@@ -53,6 +53,13 @@ bot.polling(none_stop=True, interval=0)
 
 <br/>
 
+**Important Note:**
+
+Due to the release of new API version, some previous features are currently not working. The whole Request System was rebuilt, and most features could be kept, while other cannot be implemented with new API structure (at least for now). Therefore, it was decided to temporally turn off some features, mostly related to the /bestdeal command 
+
+<br/>
+
+
 ## Classes, methods, and functions information
 
 In this section, the **detailed information** about *classes, their methods nad functions* will be provided
@@ -69,14 +76,14 @@ In this section, the **detailed information** about *classes, their methods nad 
         info (Optional[Dict[str, Optional[str, int]]]): Dictionary of user's request criteria
 ````
 
-#### Method clear_data
+#### **Method clear_data**
 ````
     Method clearing the criteria of the request
 
     :return: None
 ````
 
-#### Method send_info
+#### **Method send_info**
 ````
     Method that sends the list of commands to the user
 
@@ -85,7 +92,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method send_hotels
+#### **Method send_hotels**
 ````
     Method that send the list of hotels to the user
 
@@ -96,7 +103,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method say_hello
+#### **Method say_hello**
 ````
     Method greeting the user
 
@@ -104,7 +111,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method send_low_hotels
+#### **Method send_low_hotels**
 ````
     Method starting a branch to find low price hotels
 
@@ -113,7 +120,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method send_high_hotels
+#### **Method send_high_hotels**
 ````
     Method starting a branch to find high price hotels
 
@@ -122,7 +129,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method send_best_hotels
+#### **Method send_best_hotels**
 > Currently is not being used
 ````
     Method starting a branch to find best price hotels based on the cost and distance from the center 
@@ -132,7 +139,7 @@ In this section, the **detailed information** about *classes, their methods nad 
     :return: None
 ````
 
-#### Method send_history
+#### **Method send_history**
 ````
     Method sending the history of requested hotels to the user
 
@@ -168,7 +175,7 @@ ___
             __headers (Dict[str: str]): settings for API requests    
 ````
 
-#### Method get_property_details
+#### **Method get_property_details**
 ```
     Methods that makes a request to the API to get the rating and address from the hotel
 
@@ -177,7 +184,7 @@ ___
     :return: Tuple[Union[str, int], str]
 ```
 
-#### Method get_hotels
+#### **Method get_hotels**
 > Currently, some of the arguments are not processed and do not affect the final result (images_num, cost_range, distance_range)
 ````
     Final method that gets the hotels based on all criteria
@@ -202,7 +209,7 @@ ___
     :rtype: List[Hotel]
 ````
 
-#### Method get_destination_id
+#### **Method get_destination_id**
 ````
     Method getting the City ID based on its name.
     if the city is not found returns the string 'CITY_NOT_FOUND'
@@ -215,7 +222,7 @@ ___
     :rtype: str
 ````
 
-#### Method get_photos
+#### **Method get_photos**
 
 > Currently is not being used
 
@@ -259,31 +266,31 @@ ___
         cursor: connection cursor
 ````
 
-#### Method start
+#### **Method start**
 ````
     Method that starts the database
     :return: None
 ````
 
-#### Method close
+#### **Method close**
 ````
     Method that closes the database
     :return: None
 ````
 
-#### Method clear
+#### **Method clear**
 ````
     Methods that clears the database
     :return: None
 ````
 
-#### Method create
+#### **Method create**
 ````
 Метод, создающий все таблицы в базе данных
     :return: None
 ````
 
-#### Method insert_hotel
+#### **Method insert_hotel**
 ````
     Method that inserts the hotel to the database
 
@@ -292,7 +299,7 @@ ___
     :return: None
 ````
 
-#### Method insert_request
+#### **Method insert_request**
 ````
     Method that inserts the user request to the database 
 
@@ -307,7 +314,7 @@ ___
     :return: None
 ````
 
-#### Method get_hotel
+#### **Method get_hotel**
 ````
     Method that gets the hotels from database based on its ID
 
@@ -316,7 +323,7 @@ ___
     :return: Hotel
 ````
 
-#### Method get_request
+#### **Method get_request**
 ````
     Method that gets the request from teh user based on their ID
 
@@ -333,7 +340,7 @@ ___
 ```` 
 Functions used to process messages and redirect the user to another branch of dialog
 ````
-#### Function select_city
+#### **Function select_city**
 ````
     Function that gets the City ID and redirects to the branch of choosing number of hotels 
 
@@ -342,7 +349,7 @@ Functions used to process messages and redirect the user to another branch of di
     :return: None
 ````
 
-#### Function select_cost_range 
+#### **Function select_cost_range** 
 > Currently is not being used
 ````
     Function that gets the price range from the user and redirects to the branch of choosing the range of the possible distance from center 
@@ -352,7 +359,7 @@ Functions used to process messages and redirect the user to another branch of di
     :return: None
 ````
 
-#### select_distance_range 
+#### **select_distance_range **
 > Currently is not being used
 ````
     Function that gets the range of possible distance and redirects to the branch of choosing the number of hotels 
@@ -362,7 +369,7 @@ Functions used to process messages and redirect the user to another branch of di
     :return: None
 ````
 
-#### Function select_hotel_number
+#### **Function select_hotel_number**
 ````
     Function that gets the number of hotels from user and send the list of hotels to user 
 
@@ -371,7 +378,7 @@ Functions used to process messages and redirect the user to another branch of di
     :return: None
 ````
 
-#### Function images_need
+#### **Function images_need**
 > Currently is not being used
 ````
     Function that gets the information whether or not the user needs images and redirects tot the branch of choosing the number of images or send hotels to the user
@@ -381,7 +388,7 @@ Functions used to process messages and redirect the user to another branch of di
     :return: None
 ````
 
-#### Function select_images_num
+#### **Function select_images_num**
 > Currently is not being used
 ````
     Function that gets the number of images and send hotels to the user
