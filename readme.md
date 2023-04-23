@@ -286,7 +286,7 @@ ___
 
 #### **Method create**
 ````
-Метод, создающий все таблицы в базе данных
+    Method that generates all tables in database
     :return: None
 ````
 
