@@ -12,7 +12,7 @@ class Request:
         request_id (int): Request ID
         command (str): command the user used to get hotels
         date (str): date and time of the request
-        hotels (List[Hotel): the list of hotels from this request
+        hotels (List[Hotel]): the list of hotels from this request
 
     """
     def __init__(self, request_id: int, command: str, city: str, date: str, hotels: List[Hotel]) -> None:
@@ -35,6 +35,10 @@ class DataBase:
 
     Args:
         filename (str): the filename of database
+    
+    Attributes:
+        conn: connection to a database
+        cursor: connection cursor
 
     """
     def __init__(self, filename: str) -> None:
@@ -52,7 +56,7 @@ class DataBase:
 
     def close(self) -> None:
         """
-        method that closes the database
+        Method that closes the database
         :return: None
         """
         try:

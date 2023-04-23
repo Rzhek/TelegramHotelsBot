@@ -28,13 +28,6 @@ class Hotel:
         self.images: Optional[List[str]] = images
         self.distance: str = distance
 
-    # def __str__(self) -> str:
-    #     rating: str = '⭐️' * int(self.rating)
-    #     return '🏨 Hotel: {name}\n💵 Price: {price}\n🌟 Rating: {rating}\n📐 Distance from the center: {distance}\n' \
-    #            '🗺 Address: {address}'.format(
-    #                 name=self.name, price=self.price, rating=rating, distance=self.distance, address=self.address
-    #             )
-
     def __str__(self) -> str:
         if self.rating == 'undefined':
             rating = self.rating
@@ -72,11 +65,11 @@ def select_city(message, bot) -> None:
 
 # def select_cost_range(message, bot) -> None:
 #     """
-#     Function that gets the price range from the user and redirects to the branch of choosing the range of the possible distance from center 
+    # Function that gets the price range from the user and redirects to the branch of choosing the range of the possible distance from center 
 
-#     :param message: User message that contains the range of prices
-#     :param bot: Instance of Bot class
-#     :return: None
+    # :param message: User message that contains the range of prices
+    # :param bot: Instance of Bot class
+    # :return: None
 #     """
 #     bot.info['cost_range'] = tuple(message.text.strip().split()[:2])
 
@@ -89,11 +82,11 @@ def select_city(message, bot) -> None:
 
 # def select_distance_range(message, bot) -> None:
 #     """
-#     Function that gets the range of possible distance and redirects to the branch of choosing the number of hotels 
+    # Function that gets the range of possible distance and redirects to the branch of choosing the number of hotels 
 
-#     :param message: User message that contains the range of distances
-#     :param bot: Instance of Bot class
-#     :return: None
+    # :param message: User message that contains the range of distances
+    # :param bot: Instance of Bot class
+    # :return: None
 #     """
 #     bot.info['distance_range'] = tuple(message.text.split()[:2])
 #     msg = bot.send_message(message.from_user.id, '📝 Enter the number of hotels:')
@@ -129,11 +122,11 @@ def select_hotels_number(message, bot) -> None:
 
 # def images_need(message, bot) -> None:
 #     """
-#     Function that gets the information whether or not the user needs images and redirects tot the branch of choosing the number of images or send hotels to the user
+    # Function that gets the information whether or not the user needs images and redirects tot the branch of choosing the number of images or send hotels to the user
 
-#     :param message: User message that contains the answer (yes / no)
-#     :param bot: Instance of Bot class
-#     :return: None
+    # :param message: User message that contains the answer (yes / no)
+    # :param bot: Instance of Bot class
+    # :return: None
 #     """
 #     if  message.text.strip().lower() == 'yes':
 #         # If positive answer
@@ -154,11 +147,11 @@ def select_hotels_number(message, bot) -> None:
 
 # def select_images_num(message, bot) -> None:
 #     """
-#     Function that gets the number of images and send hotels to the user
+    # Function that gets the number of images and send hotels to the user
 
-#     :param message: User message that contains the number of images
-#     :param bot: Instance of Bot class
-#     :return: None
+    # :param message: User message that contains the number of images
+    # :param bot: Instance of Bot class
+    # :return: None
 #     """
 #     if 1 <= int(message.text) <= max_images:
 #         # if the number of images is in possible range

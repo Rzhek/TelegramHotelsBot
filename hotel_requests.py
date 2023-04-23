@@ -7,7 +7,13 @@ import os
 
 
 class HotelRequests:
-    """ Class executing the requests to Hotels API """
+    """
+    Class executing the requests to Hotels API
+
+        Args:
+            __x_rapidapi_key (str): the personal API key
+            __headers (Dict[str: str]): settings for API requests    
+    """
 
     def __init__(self) -> None:
         load_dotenv()
@@ -18,7 +24,15 @@ class HotelRequests:
             "X-RapidAPI-Host": "hotels4.p.rapidapi.com"
     }
 
-    def get_property_details(self, hotelId):
+    def get_property_details(self, hotelId: str) -> Tuple[Union[str, int], str]:
+        """
+        Methods that makes a request to the API to get the rating and address from the hotel
+
+        :param hotelId: Hotel ID
+        :type hotelId: str
+        :return: Tuple[Union[str, int], str]
+        """
+
         # ! DATA SAVING MODE
         # return 'undefined', 'undefined' 
 
@@ -62,19 +76,14 @@ class HotelRequests:
         :type images_num: int
         :param cost_range: Tuple that contains the range of possible prices.
             1st value - minimal price, 2nd - maximum price
-        :type cost_range: Optional[Tuple[str]
+        :type cost_range: Optional[Tuple[str]]
         :param distance_range: Tuple that contains the range of the possible distance from the center.
             1st value - minimal distance, 2nd - maximum distance
-        :type distance_range: Optional[Tuple[str]
+        :type distance_range: Optional[Tuple[str]]
 
         :return: hotels_list
-        :rtype: List[Hotel
+        :rtype: List[Hotel]
         """
-
-        def get_neighborhood(obj):
-            if obj == None:
-                return 'Undefined'
-            return obj.get('name')
         
         url = "https://hotels4.p.rapidapi.com/properties/v2/list"
 
@@ -108,20 +117,6 @@ class HotelRequests:
         response = requests.request("POST", url, json=payload, headers=self.__headers)
         hotels = json.loads(response.text).get('data', {}).get('propertySearch', {}).get('properties', {})
 
-        # hotels_list = list(
-        #     map(
-        #         lambda x: Hotel(
-        #             hotel_id=x.get("id"),
-        #             name=x.get('name'),
-        #             # address=get_neighborhood(x.get('neighborhood')),
-        #             # rating=x.get('starRating', 0),
-        #             # address, rating = (0, 0),
-        #             price=x.get('mapMarker', {}).get('label', {}),
-        #             images=[x.get('propertyImage', {}).get('image', {}).get('url')],
-        #             distance=0
-        #         ), hotels
-        #     )
-        # )
         hotels_list = []
         for hotel in hotels:
             hotel_id=hotel.get("id")
@@ -168,30 +163,30 @@ class HotelRequests:
         finally:
             return destination_id
 
-    def get_photos(self, hotel_id: str, num: Union[str, int]) -> Optional[List[str]]:
-        """
-        Method getting the pictures of hotels
+    # def get_photos(self, hotel_id: str, num: Union[str, int]) -> Optional[List[str]]:
+    #     """
+    #     Method getting the pictures of hotels
 
-        :param hotel_id: Hotel ID
-        :type hotel_id: str
-        :param num: Number of pictures for each hotel
-        :type num: Union[str, int]
-        :returns: (result, None)
-        :rtype: Optional[List[str]]
-        """
-        if int(num) == 0:
-            # If images are not needed
-            return
-        url: str = "https://hotels4.p.rapidapi.com/properties/get-hotel-photos"
-        querystring: Dict[str] = {"id": hotel_id}
+    #     :param hotel_id: Hotel ID
+    #     :type hotel_id: str
+    #     :param num: Number of pictures for each hotel
+    #     :type num: Union[str, int]
+    #     :returns: (result, None)
+    #     :rtype: Optional[List[str]]
+    #     """
+    #     if int(num) == 0:
+    #         # If images are not needed
+    #         return
+    #     url: str = "https://hotels4.p.rapidapi.com/properties/get-hotel-photos"
+    #     querystring: Dict[str] = {"id": hotel_id}
 
-        response: dict = json.loads(requests.request("GET", url, headers=self.__headers, params=querystring).text)
-        result: list[str] = list(map(
-            lambda x: x['baseUrl'].format(size=x['sizes'][0]['suffix']),
-            response['hotelImages']
-        ))[:int(num)]
+    #     response: dict = json.loads(requests.request("GET", url, headers=self.__headers, params=querystring).text)
+    #     result: list[str] = list(map(
+    #         lambda x: x['baseUrl'].format(size=x['sizes'][0]['suffix']),
+    #         response['hotelImages']
+    #     ))[:int(num)]
 
-        return result
+    #     return result
 
 
 

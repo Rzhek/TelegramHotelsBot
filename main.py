@@ -121,7 +121,6 @@ class Bot(telebot.TeleBot):
         """
         Method starting a branch to find high price hotels
 
-
         :param chat_id: Chat id in which the message needs to be sent
         :type chat_id: int
         :return: None
